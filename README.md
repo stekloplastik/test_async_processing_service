@@ -16,6 +16,7 @@
 - **ORM / Подключение к БД**: SQLAlchemy 2.0 (асинхронный драйвер `asyncpg`)
 - **Миграции БД**: Alembic
 - **Тестирование**: Pytest + HTTPX
+- **Линтер и форматировщик**: Ruff
 - **Контейнеризация**: Docker + Docker Compose
 
 ---
@@ -103,6 +104,14 @@ docker compose up --build -d
 Миграции Alembic применяются автоматически при старте контейнера `api`. Если вам нужно накатить их вручную, выполните:
 ```bash
 docker compose exec api alembic upgrade head
+```
+
+### 3. Линтинг и форматирование кода
+Для проверки качества кода и его форматирования используется инструмент `ruff`.
+Проверить и отформатировать код локально можно с помощью команд:
+```bash
+poetry run ruff format app tests
+poetry run ruff check app tests --fix
 ```
 
 ---
