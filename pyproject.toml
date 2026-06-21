@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "test-async-processing-service"
+version = "0.1.0"
+description = "Asynchronous payment processing service with Outbox Pattern, Idempotency, and DLQ"
+authors = ["Antigravity <antigravity@google.com>"]
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.111.0"
+uvicorn = "^0.29.0"
+pydantic = "^2.7.0"
+pydantic-settings = "^2.2.0"
+sqlalchemy = "^2.0.29"
+asyncpg = "^0.29.0"
+faststream = {version = "^0.7.0", extras = ["rabbit"]}
+alembic = "^1.13.0"
+httpx = "^0.27.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
